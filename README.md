@@ -1,2 +1,3 @@
 # R-Programming
-This is programming with R shoing some basic data analysis.
+R is a popular language that is used for 
+This is programming with R showing some basic data analysis.
