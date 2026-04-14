@@ -1,0 +1,89 @@
+---
+title: "W1_DQ"
+author: "AmritaPudasaini"
+date: "2026-03-15"
+output: html_document
+---
+# Load the churn dataset
+```{r}
+churn <- read.csv("C:/Users/DELL/Downloads/churn-bigml-20.csv")
+```
+# View structure of dataset
+```{r}
+str(churn)
+```
+# Check missing values
+```{r}
+colSums(is.na(churn))
+```
+
+```{r}
+# Check unique states
+unique(churn$State)
+# Check unique area codes
+unique(churn$Area.code)
+# Compare state and area code
+table(churn$State, churn$Area.code)
+```
+
+# Create boxplot to detect outliers
+```{r}
+boxplot(churn$Customer.service.calls,
+        main = "Distribution of Customer Service Calls",
+        ylab = "Number of Calls",
+        col = "lightblue")
+```
+# Load adult dataset
+```{r}
+adult <- read.csv("C:/Users/DELL/Downloads/adlt_data.csv")
+adult
+```
+# Check dataset structure
+```{r}
+str(adult)
+```
+# Display first 10 rows
+```{r}
+head(adult, 10)
+```
+# Select numeric variables
+```{r}
+numeric_vars <- adult[, sapply(adult, is.numeric)]
+numeric_vars
+```
+
+# Compute correlation matrix
+```{r}
+cor(numeric_vars)
+```
+# Creating Bar Charts for Categorical Variables with Income Overlay
+```{r}
+library(ggplot2)
+
+# Workclass vs Income
+ggplot(adult, aes(x = workclass, fill = income)) +
+  geom_bar(position = "fill") +
+  labs(title = "Income Distribution by Workclass",
+       y = "Proportion") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+# Marital Status vs Income
+ggplot(adult, aes(x = marital_status, fill = income)) +
+  geom_bar(position = "fill") +
+  labs(title = "Income Distribution by Marital Status",
+       y = "Proportion") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+# Occupation vs Income
+ggplot(adult, aes(x = occupation, fill = income)) +
+  geom_bar(position = "fill") +
+  labs(title = "Income Distribution by Occupation",
+       y = "Proportion") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
