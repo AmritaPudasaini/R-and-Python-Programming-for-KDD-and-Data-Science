@@ -16,7 +16,6 @@ str(churn)
 ```{r}
 colSums(is.na(churn))
 ```
-
 ```{r}
 # Check unique states
 unique(churn$State)
